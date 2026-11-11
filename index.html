@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a2a">
+  <title>LocadoraVeiculos — encontre seu próximo caminho</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="LocadoraVeiculos, página inicial"><span class="brand-mark">L</span><span>Locadora<span class="brand-light">Veiculos</span></span></a>
+    <nav class="main-nav" aria-label="Navegação principal"><a class="active" href="index.html">Veículos</a><a href="#como-funciona">Como funciona</a><a href="#ajuda">Ajuda</a></nav>
+    <div class="header-actions"><a class="login-link" href="cadastro.html">Entrar</a><a class="button button-dark button-small" href="cadastro.html">Criar conta <span aria-hidden="true">↗</span></a></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> LIBERDADE PARA IR MAIS LONGE</div>
+        <h1>Seu próximo caminho<br>começa <em>aqui.</em></h1>
+        <p>Encontre o carro ideal para cada destino. Simples de reservar, fácil de aproveitar.</p>
+        <div class="trust-row"><div class="avatar-stack"><span>R</span><span>M</span><span>A</span><span>+</span></div><span><strong>Mais de 2.400</strong> pessoas viajaram com a gente</span></div>
+      </div>
+      <div class="hero-art" aria-label="Ilustração de uma estrada ao pôr do sol">
+        <div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div><div class="road"><span class="road-line"></span></div>
+        <div class="hero-note"><span class="note-icon">✦</span><div><strong>Viaje do seu jeito</strong><small>O destino é todo seu.</small></div></div>
+      </div>
+      <form class="search-panel" action="#veiculos">
+        <label class="search-field"><span class="field-icon">⌖</span><span><small>LOCAL DE RETIRADA</small><select aria-label="Local de retirada"><option>São Paulo, SP</option><option>Rio de Janeiro, RJ</option><option>Belo Horizonte, MG</option></select></span></label>
+        <label class="search-field"><span class="field-icon">▦</span><span><small>RETIRADA</small><input aria-label="Data de retirada" type="date" value="2026-11-20"></span></label>
+        <label class="search-field"><span class="field-icon">▦</span><span><small>DEVOLUÇÃO</small><input aria-label="Data de devolução" type="date" value="2026-11-24"></span></label>
+        <a class="button button-accent search-button" href="#veiculos">Buscar carros <span aria-hidden="true">→</span></a>
+      </form>
+    </section>
+
+    <section class="fleet-section" id="veiculos">
+      <div class="section-heading"><div><div class="eyebrow">ESCOLHA O SEU</div><h2>Encontre seu <em>carro ideal</em></h2><p>Opções para todos os planos, com conforto e tranquilidade.</p></div><a href="#veiculos" class="text-link">Ver todos os carros <span>→</span></a></div>
+      <div class="filter-row"><button class="filter active">Todos <span>08</span></button><button class="filter">Econômicos <span>03</span></button><button class="filter">SUVs <span>02</span></button><button class="filter">Premium <span>03</span></button><span class="availability"><span class="status-dot"></span> 8 veículos disponíveis</span></div>
+      <div class="car-grid">
+        <article class="car-card"><div class="car-visual visual-sand"><span class="car-tag">MAIS ALUGADO</span><span class="visual-label">CITY <b>01</b></span><svg class="car-art car-silver" viewBox="0 0 380 150" role="img" aria-label="Ilustração de um sedan compacto prata"><ellipse cx="190" cy="128" rx="135" ry="12" fill="#9a988e" opacity=".22"/><path d="M57 103l12-28c5-11 15-17 28-19l42-8 30-29c7-7 15-10 25-10h43c15 0 26 6 36 18l27 32 26 9c12 4 19 13 20 25l2 20H45l2-8c1-5 5-9 10-10z" fill="#d6d9d4"/><path d="M149 51l28-27c4-4 9-6 15-6h21v33zm73 0V18h15c10 0 17 4 23 12l17 21z" fill="#738382"/><path d="M51 99h309v20H49z" fill="#b5bab5"/><circle cx="111" cy="118" r="21" fill="#273638"/><circle cx="111" cy="118" r="10" fill="#d9ddd7"/><circle cx="302" cy="118" r="21" fill="#273638"/><circle cx="302" cy="118" r="10" fill="#d9ddd7"/><path d="M59 94l15-5-5 14H53zm287-1 11 5-1 7h-14z" fill="#fff0c2"/><path d="M184 57h23" stroke="#a0a6a1" stroke-width="2"/></svg></div><div class="car-info"><div class="car-title"><div><h3>Toyota Corolla</h3><p>Sedan · Automático · Flex</p></div><span class="rating">★ 4,9</span></div><div class="car-meta"><span>◉ 5 lugares</span><span>▣ Ar-condicionado</span></div><div class="car-footer"><div><strong>R$ 189</strong><small>/ diária</small><div class="availability-text">Disponível para reserva</div></div><a class="button button-dark reserve-button" href="checkout.html">Reservar <span>→</span></a></div></div></article>
+        <article class="car-card"><div class="car-visual visual-green"><span class="car-tag tag-muted">AVENTURA</span><span class="visual-label">SUV <b>02</b></span><svg class="car-art" viewBox="0 0 380 150" role="img" aria-label="Ilustração de um SUV verde"><ellipse cx="190" cy="128" rx="135" ry="12" fill="#536d60" opacity=".25"/><path d="M53 103l11-34c4-12 14-19 27-21l48-7 29-30c7-7 16-10 27-10h56c15 0 26 6 35 18l27 31 30 8c12 4 20 13 21 25l1 25H44l2-8c1-5 3-8 7-9z" fill="#5e796b"/><path d="M147 49l28-28c4-4 9-6 15-6h24v34zm77 0V15h17c10 0 17 4 23 12l17 22z" fill="#b8c4b8"/><path d="M48 98h310v22H46z" fill="#43594e"/><circle cx="109" cy="119" r="22" fill="#202e2b"/><circle cx="109" cy="119" r="10" fill="#bfc8bc"/><circle cx="304" cy="119" r="22" fill="#202e2b"/><circle cx="304" cy="119" r="10" fill="#bfc8bc"/><path d="M56 93l14-4-5 13H51zm286-1 13 5v6h-15z" fill="#fff0c2"/></svg></div><div class="car-info"><div class="car-title"><div><h3>Jeep Compass</h3><p>SUV · Automático · Flex</p></div><span class="rating">★ 4,8</span></div><div class="car-meta"><span>◉ 5 lugares</span><span>▣ Ar-condicionado</span></div><div class="car-footer"><div><strong>R$ 279</strong><small>/ diária</small><div class="availability-text">Disponível para reserva</div></div><a class="button button-dark reserve-button" href="checkout.html">Reservar <span>→</span></a></div></div></article>
+        <article class="car-card"><div class="car-visual visual-blue"><span class="car-tag tag-premium">CONFORTO EXTRA</span><span class="visual-label">PLUS <b>03</b></span><svg class="car-art" viewBox="0 0 380 150" role="img" aria-label="Ilustração de um hatch azul"><ellipse cx="190" cy="128" rx="135" ry="12" fill="#456779" opacity=".2"/><path d="M58 103l12-28c5-11 15-17 28-19l42-8 30-29c7-7 15-10 25-10h43c15 0 26 6 36 18l27 32 26 9c12 4 19 13 20 25l2 20H45l2-8c1-5 5-9 11-10z" fill="#577b8c"/><path d="M149 51l28-27c4-4 9-6 15-6h21v33zm73 0V18h15c10 0 17 4 23 12l17 21z" fill="#bdd0d4"/><path d="M51 99h309v20H49z" fill="#3f6273"/><circle cx="111" cy="118" r="21" fill="#25363b"/><circle cx="111" cy="118" r="10" fill="#cbd4d1"/><circle cx="302" cy="118" r="21" fill="#25363b"/><circle cx="302" cy="118" r="10" fill="#cbd4d1"/><path d="M59 94l15-5-5 14H53zm287-1 11 5-1 7h-14z" fill="#fff0c2"/></svg></div><div class="car-info"><div class="car-title"><div><h3>Honda City</h3><p>Hatch · Automático · Flex</p></div><span class="rating">★ 4,9</span></div><div class="car-meta"><span>◉ 5 lugares</span><span>▣ Ar-condicionado</span></div><div class="car-footer"><div><strong>R$ 159</strong><small>/ diária</small><div class="availability-text">Disponível para reserva</div></div><a class="button button-dark reserve-button" href="checkout.html">Reservar <span>→</span></a></div></div></article>
+      </div>
+    </section>
+    <section class="benefit-strip" id="como-funciona"><div><span class="benefit-icon">✓</span><div><strong>Sem surpresas</strong><small>Preço claro do início ao fim</small></div></div><div><span class="benefit-icon">◷</span><div><strong>Retirada sem espera</strong><small>Seu carro pronto no horário</small></div></div><div><span class="benefit-icon">♡</span><div><strong>Suporte de verdade</strong><small>Conte com a gente na estrada</small></div></div></section>
+  </main>
+  <footer id="ajuda"><a class="brand footer-brand" href="index.html"><span class="brand-mark">L</span><span>Locadora<span class="brand-light">Veiculos</span></span></a><span>Seu próximo caminho começa aqui.</span><span>© 2026 LocadoraVeiculos</span></footer>
+</body>
+</html>
