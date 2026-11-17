@@ -8,3 +8,255 @@
 @media(max-width:900px){.hero{padding-top:32px;min-height:555px}.hero-copy{width:55%;padding-top:10px}.hero h1{font-size:42px}.hero-art{width:44%;height:300px;top:28px}.search-panel{bottom:4px;flex-wrap:wrap;height:auto;gap:7px;padding:12px}.search-field{padding:0 10px}.search-field:first-child{flex:1.2}.search-button{height:42px}.car-grid{grid-template-columns:repeat(2,1fr)}.car-card:last-child{display:none}.checkout-wrap{margin-left:4vw;margin-right:4vw}.checkout-grid{grid-template-columns:minmax(0,1.3fr) minmax(280px,.9fr);gap:12px}.checkout-form-card,.summary-card{padding:18px}.auth-layout{margin-left:4vw;margin-right:4vw}.auth-aside{padding-left:32px;padding-right:32px}.aside-route{margin-left:-32px;margin-right:-32px}.form-panel{padding:33px 30px}}
 @media(max-width:650px){.site-header{height:64px;padding:0 20px}.main-nav,.header-actions .login-link{display:none}.header-actions{margin-left:auto}.hero{margin:0;padding:37px 20px 0;min-height:690px}.hero-copy{width:100%;padding-top:0}.hero h1{font-size:40px;margin-top:16px}.hero-copy>p{font-size:13px;max-width:330px}.trust-row{margin-top:17px}.hero-art{top:275px;left:20px;right:20px;width:auto;height:245px}.sun{right:65px;top:30px;width:68px;height:68px}.road{height:130px}.search-panel{left:20px;right:20px;bottom:18px;display:grid;grid-template-columns:1fr 1fr;gap:0;padding:8px}.search-field{padding:10px 7px;border-right:0;min-height:55px}.search-field:first-child{grid-column:span 2;border-bottom:1px solid #edf0ed}.search-field:nth-child(2){border-right:1px solid #edf0ed}.search-field small{font-size:8px}.search-field select,.search-field input{font-size:10px}.field-icon{font-size:15px}.search-button{grid-column:span 2;width:100%;height:41px;margin-top:4px}.fleet-section{margin:0;padding:37px 20px 31px}.section-heading{align-items:flex-start}.section-heading h2{font-size:25px}.section-heading h2 em{font-size:25px}.section-heading p{font-size:10px;max-width:260px;line-height:1.5}.text-link{font-size:0;white-space:nowrap}.text-link span{font-size:18px}.filter-row{overflow:auto;margin:19px 0 14px;padding-bottom:4px}.filter{flex-shrink:0;padding:8px 10px}.availability{display:none}.car-grid{grid-template-columns:1fr}.car-card:last-child{display:block}.car-visual{height:190px}.car-art{height:145px}.benefit-strip{margin:0 20px 30px;grid-template-columns:1fr;padding:10px 15px}.benefit-strip>div,.benefit-strip>div:first-child{padding:11px 2px;border-right:0;border-bottom:1px solid #e5eae3}.benefit-strip>div:last-child{border:0}.benefit-icon{width:30px;height:30px}.benefit-strip small{font-size:9px}footer{padding:15px 20px;gap:8px;flex-wrap:wrap;min-height:65px}footer>span:nth-child(2){display:none}.auth-header{padding:0 19px}.auth-layout{display:flex;flex-direction:column;margin:17px 13px 24px;min-height:0}.auth-aside{padding:29px 25px 20px}.auth-aside h1{font-size:31px;margin:14px 0 8px}.auth-aside>p{margin:0;font-size:10px}.aside-route{height:112px;margin:18px -25px 13px}.route-sun{top:14px;width:36px;height:36px}.route-road{height:130px;bottom:-48px}.route-car{bottom:15px}.route-caption{font-size:8px}.aside-quote{padding:0}.aside-quote p{font-size:12px;margin:4px 0}.aside-quote small{font-size:8px}.form-panel{padding:25px 22px 23px}.form-top{margin-bottom:20px}.form-panel h2{font-size:21px}.account-form{margin-top:19px;gap:11px}.input-row{gap:8px}.account-form input:not([type=checkbox]){height:40px;padding:0 9px;font-size:10px}.auth-footer{padding:0 20px;font-size:9px}.auth-footer span:last-child{display:none}.checkout-header{padding:0 18px}.checkout-wrap{margin:21px 14px 27px}.checkout-wrap>.back-link{margin-bottom:16px}.checkout-title{display:block;margin-bottom:17px}.checkout-title h1{font-size:27px}.progress-label{margin-top:15px}.checkout-grid{grid-template-columns:1fr}.checkout-form-card{padding:18px 14px}.summary-card{grid-row:1;padding:16px}.checkout-section-head{gap:9px}.checkout-section-head h2{font-size:12px}.checkout-section-head p{font-size:9px}.driver-data{padding:17px 0 0 32px;gap:14px 8px}.driver-data strong{font-size:9px}.payment-options,.card-fields{margin-left:32px}.terms-check{margin-left:32px}.checkout-form-card>.form-submit{margin-left:32px;width:calc(100% - 32px)}.secure-note{margin-left:32px;font-size:8px}.payment-option{padding:9px 8px;gap:7px}.payment-copy small{font-size:8px}.card-brands{font-size:8px}.checkout-footer{padding:12px 20px}.checkout-footer span:last-child{display:block}}
 @media(max-width:360px){.hero h1{font-size:35px}.section-heading h2,.section-heading h2 em{font-size:22px}.input-row{grid-template-columns:1fr}.auth-aside h1{font-size:28px}.summary-total>strong{font-size:19px}}
+
+
+/* ==========================================================================
+   EXPERIMENTO A/B — CRO POSTHOG (Alta Margem: SUV e Premium)
+   ========================================================================== */
+
+/* Anti-flicker: esconde suavemente as seções que mutam até a flag resolver ou dar timeout */
+.ph-loading .hero-art,
+.ph-loading .hero-offer-card,
+.ph-loading .car-grid {
+  opacity: 0 !important;
+  transition: opacity 0.18s ease-in-out;
+}
+
+/* Hero Variant B (Banner de Oferta Destaque) */
+.hero-offer-card {
+  position: absolute;
+  right: 0;
+  top: 36px;
+  width: 48%;
+  height: 340px;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #102a2a 0%, #163a36 55%, #1f4f46 100%);
+  color: #fff;
+  padding: 30px 32px;
+  display: none; /* Control por padrão */
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 18px 45px rgba(16, 42, 42, 0.22);
+  border: 1px solid rgba(213, 240, 120, 0.2);
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-offer-card::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(213, 240, 120, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.offer-top-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent);
+  color: #153333;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.badge-spark {
+  color: #173333;
+  font-size: 10px;
+}
+
+.offer-subtitle {
+  font-size: 10px;
+  color: #b7cbbf;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.offer-heading {
+  font-size: 26px;
+  line-height: 1.22;
+  letter-spacing: -0.8px;
+  margin: 12px 0 8px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.offer-heading em {
+  font-family: var(--serif);
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.offer-copy {
+  font-size: 12px;
+  line-height: 1.55;
+  color: #c4d4cc;
+  margin: 0 0 14px;
+  max-width: 380px;
+}
+
+.offer-perks {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+
+.offer-perks li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #e5ece7;
+}
+
+.perk-icon {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(213, 240, 120, 0.2);
+  color: var(--accent);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.offer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-offer-cta {
+  height: 44px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 0 18px;
+  box-shadow: 0 6px 18px rgba(213, 240, 120, 0.25);
+}
+
+/* Selos e Linha de Benefícios nos Cards de Veículos */
+.tag-recommend {
+  background: #102a2a !important;
+  color: var(--accent) !important;
+  border: 1px solid rgba(213, 240, 120, 0.4);
+}
+
+.tag-rating {
+  background: #102a2a !important;
+  color: #f7d568 !important;
+  border: 1px solid rgba(247, 213, 104, 0.4);
+}
+
+.car-perk-line {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  font-weight: 600;
+  color: #3b5f45;
+  background: #eef6ec;
+  border-radius: 5px;
+  padding: 5px 8px;
+  margin: 10px 0 2px;
+}
+
+.perk-check {
+  color: #557d4a;
+  font-weight: 700;
+}
+
+/* REGRAS ATIVAS QUANDO A VARIANTE 'test' ESTÁ EM EXECUÇÃO */
+body.variant-test #hero-art-control {
+  display: none !important;
+}
+
+body.variant-test #hero-offer-test {
+  display: flex !important;
+}
+
+body.variant-test .car-card[data-category="SUV"] .tag-control,
+body.variant-test .car-card[data-category="Premium"] .tag-control {
+  display: none !important;
+}
+
+body.variant-test .car-card[data-category="SUV"] .tag-test,
+body.variant-test .car-card[data-category="Premium"] .tag-test {
+  display: inline-flex !important;
+}
+
+body.variant-test .car-card[data-category="SUV"] .car-perk-line,
+body.variant-test .car-card[data-category="Premium"] .car-perk-line {
+  display: flex !important;
+}
+
+body.variant-test .car-card[data-category="SUV"] .reserve-button,
+body.variant-test .car-card[data-category="Premium"] .reserve-button {
+  background: var(--accent) !important;
+  color: #172e2c !important;
+}
+
+body.variant-test .car-card[data-category="SUV"] .reserve-button:hover,
+body.variant-test .car-card[data-category="Premium"] .reserve-button:hover {
+  background: #c8e45d !important;
+}
+
+/* Responsividade do Banner da Variante B */
+@media(max-width:900px){
+  .hero-offer-card {
+    width: 44%;
+    height: 300px;
+    top: 28px;
+    padding: 22px 24px;
+  }
+  .offer-heading {
+    font-size: 22px;
+  }
+  .offer-copy {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+  .offer-perks {
+    margin-bottom: 12px;
+    gap: 6px 10px;
+  }
+}
+
+@media(max-width:650px){
+  .hero-offer-card {
+    top: 275px;
+    left: 20px;
+    right: 20px;
+    width: auto;
+    height: auto;
+    min-height: 245px;
+    padding: 20px;
+  }
+  .offer-heading {
+    font-size: 20px;
+  }
+  .offer-copy {
+    font-size: 10px;
+  }
+  .hero-offer-cta {
+    width: 100%;
+  }
+}

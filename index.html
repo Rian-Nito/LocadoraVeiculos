@@ -1,10 +1,41 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="ph-loading">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#102a2a">
   <title>LocadoraVeiculos — encontre seu próximo caminho!</title>
+  
+  <!-- Anti-flicker Style (Oculta suavemente seções do teste até a Feature Flag resolver) -->
+  <style id="ph-anti-flicker">
+    .ph-loading .hero-art,
+    .ph-loading .hero-offer-card,
+    .ph-loading .car-grid {
+      opacity: 0 !important;
+      transition: opacity 0.18s ease-in-out;
+    }
+  </style>
+
+  <!-- PostHog JavaScript SDK Snippet -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile optInCapturing optOutCapturing hasOptedInCapturing hasOptedOutCapturing clearOptInOptOutCapturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+
+    // Inicialização do PostHog (substitua com sua API Key e Host do PostHog)
+    posthog.init('phc_xxom6ijVBPrPuVhrGjQCu9TdzwvXJ2KBMQUUKv4Rk8qe', {
+      api_host: 'https://us.i.posthog.com', // Altere para https://eu.i.posthog.com se seu projeto estiver na UE
+      person_profiles: 'identified_only'
+    });
+  </script>
+
+  <!-- Microsoft Clarity (mapa de calor / gravações). Troque SEU_CLARITY_ID pelo Project ID -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "SEU_CLARITY_ID");
+  </script>
+
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,10 +53,33 @@
         <p>Encontre o carro ideal para cada destino. Simples de reservar, fácil de aproveitar.</p>
         <div class="trust-row"><div class="avatar-stack"><span>R</span><span>M</span><span>A</span><span>+</span></div><span><strong>Mais de 2.400</strong> pessoas viajaram com a gente</span></div>
       </div>
-      <div class="hero-art" aria-label="Ilustração de uma estrada ao pôr do sol">
+
+      <!-- Hero Art: Variante A - Controle (Original com estrada decorativa) -->
+      <div class="hero-art" id="hero-art-control" aria-label="Ilustração de uma estrada ao pôr do sol">
         <div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div><div class="road"><span class="road-line"></span></div>
         <div class="hero-note"><span class="note-icon">✦</span><div><strong>Viaje do seu jeito</strong><small>O destino é todo seu.</small></div></div>
       </div>
+
+      <!-- Hero Banner: Variante B - Otimizada CRO (Destaque Alta Margem: SUVs e Premium) -->
+      <div class="hero-offer-card" id="hero-offer-test" aria-label="Destaque de veículos SUV e Premium" style="display: none;">
+        <div class="offer-top-badge">
+          <span class="badge-pill"><span class="badge-spark">✦</span> DESTAQUE PREMIUM</span>
+          <span class="offer-subtitle">Categoria Especial</span>
+        </div>
+        <div class="offer-body">
+          <h2 class="offer-heading">Conforto máximo para <em>sua viagem.</em></h2>
+          <p class="offer-copy">Eleve sua experiência na estrada com espaço extra, potência e comodidade de primeira classe.</p>
+          <ul class="offer-perks">
+            <li><span class="perk-icon">✓</span> <span>KM Livre</span></li>
+            <li><span class="perk-icon">✓</span> <span>Proteção Essencial Inclusa</span></li>
+            <li><span class="perk-icon">✓</span> <span>Cancelamento Grátis</span></li>
+          </ul>
+        </div>
+        <div class="offer-footer">
+          <a class="button button-accent hero-offer-cta" id="hero-cta-ab" href="#veiculos">Explorar SUVs e Premium <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
       <form class="search-panel" action="#veiculos">
         <label class="search-field"><span class="field-icon">⌖</span><span><small>LOCAL DE RETIRADA</small><select aria-label="Local de retirada"><option>São Paulo, SP</option><option>Rio de Janeiro, RJ</option><option>Belo Horizonte, MG</option></select></span></label>
         <label class="search-field"><span class="field-icon">▦</span><span><small>RETIRADA</small><input aria-label="Data de retirada" type="date" value="2026-11-20"></span></label>
@@ -37,14 +91,62 @@
     <section class="fleet-section" id="veiculos">
       <div class="section-heading"><div><div class="eyebrow">ESCOLHA O SEU</div><h2>Encontre seu <em>carro ideal</em></h2><p>Opções para todos os planos, com conforto e tranquilidade.</p></div><a href="#veiculos" class="text-link">Ver todos os carros <span>→</span></a></div>
       <div class="filter-row"><button class="filter active">Todos <span>08</span></button><button class="filter">Econômicos <span>03</span></button><button class="filter">SUVs <span>02</span></button><button class="filter">Premium <span>03</span></button><span class="availability"><span class="status-dot"></span> 8 veículos disponíveis</span></div>
+      
       <div class="car-grid">
-        <article class="car-card"><div class="car-visual visual-sand"><span class="car-tag">MAIS ALUGADO</span><span class="visual-label">CITY <b>01</b></span><svg class="car-art car-silver" viewBox="0 0 380 150" role="img" aria-label="Ilustração de um sedan compacto prata"><ellipse cx="190" cy="128" rx="135" ry="12" fill="#9a988e" opacity=".22"/><path d="M57 103l12-28c5-11 15-17 28-19l42-8 30-29c7-7 15-10 25-10h43c15 0 26 6 36 18l27 32 26 9c12 4 19 13 20 25l2 20H45l2-8c1-5 5-9 10-10z" fill="#d6d9d4"/><path d="M149 51l28-27c4-4 9-6 15-6h21v33zm73 0V18h15c10 0 17 4 23 12l17 21z" fill="#738382"/><path d="M51 99h309v20H49z" fill="#b5bab5"/><circle cx="111" cy="118" r="21" fill="#273638"/><circle cx="111" cy="118" r="10" fill="#d9ddd7"/><circle cx="302" cy="118" r="21" fill="#273638"/><circle cx="302" cy="118" r="10" fill="#d9ddd7"/><path d="M59 94l15-5-5 14H53zm287-1 11 5-1 7h-14z" fill="#fff0c2"/><path d="M184 57h23" stroke="#a0a6a1" stroke-width="2"/></svg></div><div class="car-info"><div class="car-title"><div><h3>Toyota Corolla</h3><p>Sedan · Automático · Flex</p></div><span class="rating">★ 4,9</span></div><div class="car-meta"><span>◉ 5 lugares</span><span>▣ Ar-condicionado</span></div><div class="car-footer"><div><strong>R$ 189</strong><small>/ diária</small><div class="availability-text">Disponível para reserva</div></div><a class="button button-dark reserve-button" href="checkout.html">Reservar <span>→</span></a></div></div></article>
-        <article class="car-card"><div class="car-visual visual-green"><span class="car-tag tag-muted">AVENTURA</span><span class="visual-label">SUV <b>02</b></span><svg class="car-art" viewBox="0 0 380 150" role="img" aria-label="Ilustração de um SUV verde"><ellipse cx="190" cy="128" rx="135" ry="12" fill="#536d60" opacity=".25"/><path d="M53 103l11-34c4-12 14-19 27-21l48-7 29-30c7-7 16-10 27-10h56c15 0 26 6 35 18l27 31 30 8c12 4 20 13 21 25l1 25H44l2-8c1-5 3-8 7-9z" fill="#5e796b"/><path d="M147 49l28-28c4-4 9-6 15-6h24v34zm77 0V15h17c10 0 17 4 23 12l17 22z" fill="#b8c4b8"/><path d="M48 98h310v22H46z" fill="#43594e"/><circle cx="109" cy="119" r="22" fill="#202e2b"/><circle cx="109" cy="119" r="10" fill="#bfc8bc"/><circle cx="304" cy="119" r="22" fill="#202e2b"/><circle cx="304" cy="119" r="10" fill="#bfc8bc"/><path d="M56 93l14-4-5 13H51zm286-1 13 5v6h-15z" fill="#fff0c2"/></svg></div><div class="car-info"><div class="car-title"><div><h3>Jeep Compass</h3><p>SUV · Automático · Flex</p></div><span class="rating">★ 4,8</span></div><div class="car-meta"><span>◉ 5 lugares</span><span>▣ Ar-condicionado</span></div><div class="car-footer"><div><strong>R$ 279</strong><small>/ diária</small><div class="availability-text">Disponível para reserva</div></div><a class="button button-dark reserve-button" href="checkout.html">Reservar <span>→</span></a></div></div></article>
-        <article class="car-card"><div class="car-visual visual-blue"><span class="car-tag tag-premium">CONFORTO EXTRA</span><span class="visual-label">PLUS <b>03</b></span><svg class="car-art" viewBox="0 0 380 150" role="img" aria-label="Ilustração de um hatch azul"><ellipse cx="190" cy="128" rx="135" ry="12" fill="#456779" opacity=".2"/><path d="M58 103l12-28c5-11 15-17 28-19l42-8 30-29c7-7 15-10 25-10h43c15 0 26 6 36 18l27 32 26 9c12 4 19 13 20 25l2 20H45l2-8c1-5 5-9 11-10z" fill="#577b8c"/><path d="M149 51l28-27c4-4 9-6 15-6h21v33zm73 0V18h15c10 0 17 4 23 12l17 21z" fill="#bdd0d4"/><path d="M51 99h309v20H49z" fill="#3f6273"/><circle cx="111" cy="118" r="21" fill="#25363b"/><circle cx="111" cy="118" r="10" fill="#cbd4d1"/><circle cx="302" cy="118" r="21" fill="#25363b"/><circle cx="302" cy="118" r="10" fill="#cbd4d1"/><path d="M59 94l15-5-5 14H53zm287-1 11 5-1 7h-14z" fill="#fff0c2"/></svg></div><div class="car-info"><div class="car-title"><div><h3>Honda City</h3><p>Hatch · Automático · Flex</p></div><span class="rating">★ 4,9</span></div><div class="car-meta"><span>◉ 5 lugares</span><span>▣ Ar-condicionado</span></div><div class="car-footer"><div><strong>R$ 159</strong><small>/ diária</small><div class="availability-text">Disponível para reserva</div></div><a class="button button-dark reserve-button" href="checkout.html">Reservar <span>→</span></a></div></div></article>
+        <!-- Card 1: Toyota Corolla (Econômico / Sedan) -->
+        <article class="car-card" data-category="Economico" data-model="Toyota Corolla">
+          <div class="car-visual visual-sand">
+            <span class="car-tag tag-control">MAIS ALUGADO</span>
+            <span class="visual-label">CITY <b>01</b></span>
+            <svg class="car-art car-silver" viewBox="0 0 380 150" role="img" aria-label="Ilustração de um sedan compacto prata"><ellipse cx="190" cy="128" rx="135" ry="12" fill="#9a988e" opacity=".22"/><path d="M57 103l12-28c5-11 15-17 28-19l42-8 30-29c7-7 15-10 25-10h43c15 0 26 6 36 18l27 32 26 9c12 4 19 13 20 25l2 20H45l2-8c1-5 5-9 10-10z" fill="#d6d9d4"/><path d="M149 51l28-27c4-4 9-6 15-6h21v33zm73 0V18h15c10 0 17 4 23 12l17 21z" fill="#738382"/><path d="M51 99h309v20H49z" fill="#b5bab5"/><circle cx="111" cy="118" r="21" fill="#273638"/><circle cx="111" cy="118" r="10" fill="#d9ddd7"/><circle cx="302" cy="118" r="21" fill="#273638"/><circle cx="302" cy="118" r="10" fill="#d9ddd7"/><path d="M59 94l15-5-5 14H53zm287-1 11 5-1 7h-14z" fill="#fff0c2"/><path d="M184 57h23" stroke="#a0a6a1" stroke-width="2"/></svg>
+          </div>
+          <div class="car-info">
+            <div class="car-title"><div><h3>Toyota Corolla</h3><p>Sedan · Automático · Flex</p></div><span class="rating">★ 4,9</span></div>
+            <div class="car-meta"><span>◉ 5 lugares</span><span>▣ Ar-condicionado</span></div>
+            <div class="car-footer"><div><strong>R$ 189</strong><small>/ diária</small><div class="availability-text">Disponível para reserva</div></div><a class="button button-dark reserve-button" href="checkout.html">Reservar <span>→</span></a></div>
+          </div>
+        </article>
+
+        <!-- Card 2: Jeep Compass (SUV - Alta Margem) -->
+        <article class="car-card" data-category="SUV" data-model="Jeep Compass">
+          <div class="car-visual visual-green">
+            <span class="car-tag tag-control tag-muted">AVENTURA</span>
+            <span class="car-tag tag-test tag-recommend" style="display: none;">MAIS RECOMENDADO</span>
+            <span class="visual-label">SUV <b>02</b></span>
+            <svg class="car-art" viewBox="0 0 380 150" role="img" aria-label="Ilustração de um SUV verde"><ellipse cx="190" cy="128" rx="135" ry="12" fill="#536d60" opacity=".25"/><path d="M53 103l11-34c4-12 14-19 27-21l48-7 29-30c7-7 16-10 27-10h56c15 0 26 6 35 18l27 31 30 8c12 4 20 13 21 25l1 25H44l2-8c1-5 3-8 7-9z" fill="#5e796b"/><path d="M147 49l28-28c4-4 9-6 15-6h24v34zm77 0V15h17c10 0 17 4 23 12l17 22z" fill="#b8c4b8"/><path d="M48 98h310v22H46z" fill="#43594e"/><circle cx="109" cy="119" r="22" fill="#202e2b"/><circle cx="109" cy="119" r="10" fill="#bfc8bc"/><circle cx="304" cy="119" r="22" fill="#202e2b"/><circle cx="304" cy="119" r="10" fill="#bfc8bc"/><path d="M56 93l14-4-5 13H51zm286-1 13 5v6h-15z" fill="#fff0c2"/></svg>
+          </div>
+          <div class="car-info">
+            <div class="car-title"><div><h3>Jeep Compass</h3><p>SUV · Automático · Flex</p></div><span class="rating">★ 4,8</span></div>
+            <div class="car-meta"><span>◉ 5 lugares</span><span>▣ Ar-condicionado</span></div>
+            <div class="car-perk-line" style="display: none;"><span class="perk-check">✓</span> Seguro básico + KM livre inclusos</div>
+            <div class="car-footer"><div><strong>R$ 279</strong><small>/ diária</small><div class="availability-text">Disponível para reserva</div></div><a class="button button-dark reserve-button" href="checkout.html">Reservar <span>→</span></a></div>
+          </div>
+        </article>
+
+        <!-- Card 3: Honda City (Premium / Plus 03 - Alta Margem) -->
+        <article class="car-card" data-category="Premium" data-model="Honda City">
+          <div class="car-visual visual-blue">
+            <span class="car-tag tag-control tag-premium">CONFORTO EXTRA</span>
+            <span class="car-tag tag-test tag-rating" style="display: none;">MELHOR AVALIADO (4.9★)</span>
+            <span class="visual-label">PLUS <b>03</b></span>
+            <svg class="car-art" viewBox="0 0 380 150" role="img" aria-label="Ilustração de um hatch azul"><ellipse cx="190" cy="128" rx="135" ry="12" fill="#456779" opacity=".2"/><path d="M58 103l12-28c5-11 15-17 28-19l42-8 30-29c7-7 15-10 25-10h43c15 0 26 6 36 18l27 32 26 9c12 4 19 13 20 25l2 20H45l2-8c1-5 5-9 11-10z" fill="#577b8c"/><path d="M149 51l28-27c4-4 9-6 15-6h21v33zm73 0V18h15c10 0 17 4 23 12l17 21z" fill="#bdd0d4"/><path d="M51 99h309v20H49z" fill="#3f6273"/><circle cx="111" cy="118" r="21" fill="#25363b"/><circle cx="111" cy="118" r="10" fill="#cbd4d1"/><circle cx="302" cy="118" r="21" fill="#25363b"/><circle cx="302" cy="118" r="10" fill="#cbd4d1"/><path d="M59 94l15-5-5 14H53zm287-1 11 5-1 7h-14z" fill="#fff0c2"/></svg>
+          </div>
+          <div class="car-info">
+            <div class="car-title"><div><h3>Honda City</h3><p>Hatch · Automático · Flex</p></div><span class="rating">★ 4,9</span></div>
+            <div class="car-meta"><span>◉ 5 lugares</span><span>▣ Ar-condicionado</span></div>
+            <div class="car-perk-line" style="display: none;"><span class="perk-check">✓</span> Seguro básico + KM livre inclusos</div>
+            <div class="car-footer"><div><strong>R$ 159</strong><small>/ diária</small><div class="availability-text">Disponível para reserva</div></div><a class="button button-dark reserve-button" href="checkout.html">Reservar <span>→</span></a></div>
+          </div>
+        </article>
       </div>
     </section>
+
     <section class="benefit-strip" id="como-funciona"><div><span class="benefit-icon">✓</span><div><strong>Sem surpresas</strong><small>Preço claro do início ao fim</small></div></div><div><span class="benefit-icon">◷</span><div><strong>Retirada sem espera</strong><small>Seu carro pronto no horário</small></div></div><div><span class="benefit-icon">♡</span><div><strong>Suporte de verdade</strong><small>Conte com a gente na estrada</small></div></div></section>
   </main>
+  
   <footer id="ajuda"><a class="brand footer-brand" href="index.html"><span class="brand-mark">L</span><span>Locadora<span class="brand-light">Veiculos</span></span></a><span>Seu próximo caminho começa aqui.</span><span>© 2026 LocadoraVeiculos</span></footer>
+
+  <!-- Script de Experimentação A/B e Tracking -->
+  <script src="script.js"></script>
 </body>
 </html>
